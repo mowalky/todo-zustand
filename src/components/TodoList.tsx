@@ -1,10 +1,13 @@
 import * as React from "react";
 import { Button, Input, Flex, Checkbox, Heading } from "@chakra-ui/react";
 
+import useStore from "../store";
+
 function TodoListItems() {
+  const store = useStore();
   return (
     <>
-      {[].map((todo: { id: number; text: string }) => (
+      {store.todos.map((todo: any) => (
         <Flex pt={2} key={todo.id}>
           <Checkbox />
           <Input mx={2} value={todo.text} />
