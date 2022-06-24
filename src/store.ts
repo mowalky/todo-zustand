@@ -39,6 +39,7 @@ type Store = {
   update: (id: number, text: string) => void;
   toggle: (id: number) => void;
   remove: (id: number) => void;
+  load: (todos: Todo[]) => void;
 };
 
 const useStore = create<Store>((set) => ({
@@ -73,6 +74,12 @@ const useStore = create<Store>((set) => ({
     set((state) => ({
       ...state,
       todos: removeTodo(state.todos, id),
+    }));
+  },
+  load(todos: Todo[]) {
+    set((state) => ({
+      ...state,
+      todos,
     }));
   },
 }));
