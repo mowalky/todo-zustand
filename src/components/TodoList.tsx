@@ -9,9 +9,13 @@ function TodoListItems() {
     <>
       {store.todos.map((todo: any) => (
         <Flex pt={2} key={todo.id}>
-          <Checkbox />
-          <Input mx={2} value={todo.text} />
-          <Button>Delete</Button>
+          <Checkbox checked={todo.done} onClick={() => store.toggle(todo.id)} />
+          <Input
+            mx={2}
+            value={todo.text}
+            onChange={(evt) => store.update(todo.id, evt.target.value)}
+          />
+          <Button onClick={() => store.remove(todo.id)}>Delete</Button>
         </Flex>
       ))}
     </>
